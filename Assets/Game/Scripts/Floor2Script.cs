@@ -6,7 +6,7 @@ using UnityEngine;
 public class Floor2Script : MonoBehaviour
 {
     public GameObject Floor2;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
