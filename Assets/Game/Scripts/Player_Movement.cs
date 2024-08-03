@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Player_Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody rb;
     public Transform cameraTransform;
+    private bool isMoving;
+    public Animator animator;
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+ 
 
     void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
+        animator.SetBool("isMoving", isMoving);
 
         if (horizontalInput != 0 || verticalInput != 0)
         {
@@ -44,7 +51,20 @@ public class Player_Movement : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
             }
         }
+        if (horizontalInput == 0 && verticalInput == 0) 
+        { 
+            isMoving = false; 
+            
+        }
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            isMoving = true;
+        }
+
+
     }
+    
+   
 }
 
 
