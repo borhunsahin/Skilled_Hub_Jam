@@ -63,8 +63,19 @@ public class Player_Movement : MonoBehaviour
 
 
     }
-    
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Light") && Input.GetKeyDown(KeyCode.E))
+        {
+            Light lightComponent = other.gameObject.GetComponentInChildren<Light>();
+            if (lightComponent != null)
+            {
+                lightComponent.enabled = !lightComponent.enabled;
+            }
+        }
+    }
+
+
 }
 
 
