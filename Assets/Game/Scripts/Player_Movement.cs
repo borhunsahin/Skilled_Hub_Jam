@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -10,11 +11,20 @@ public class Player_Movement : MonoBehaviour
     public Transform cameraTransform;
     private bool isMoving;
     public Animator animator;
+    public GameObject Floor2;
+    [Header("UI")]
+    [Range(0, 100)] public float thirstyAmount;
+    [Range(0, 100)] public float hungerAmount;
+    public float negSpeed = 5;
+    public Slider foodSlider;
+    public Slider ThirstySlider;
     
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        hungerAmount = 100;
+        thirstyAmount = 100;
     }
  
 
@@ -63,8 +73,18 @@ public class Player_Movement : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
+        thirstyAmount = thirstyAmount - Time.deltaTime * negSpeed;
+        hungerAmount = hungerAmount - Time.deltaTime * negSpeed;
+
+        foodSlider.value = hungerAmount;
+        ThirstySlider.value = thirstyAmount;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+       
         if (other.gameObject.CompareTag("Light") && Input.GetKeyDown(KeyCode.E))
         {
             Light lightComponent = other.gameObject.GetComponentInChildren<Light>();
@@ -73,6 +93,17 @@ public class Player_Movement : MonoBehaviour
                 lightComponent.enabled = !lightComponent.enabled;
             }
         }
+        if (other.gameObject.CompareTag("Water") && Input.GetKeyDown(KeyCode.E))
+        {
+            Destroy(other.gameObject);
+            thirstyAmount += 10;
+        }
+        if (other.gameObject.CompareTag("Food") && Input.GetKeyDown(KeyCode.E))
+        {
+            Destroy(other.gameObject);
+            hungerAmount += 10;
+        }
+
     }
 
 
