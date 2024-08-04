@@ -25,17 +25,16 @@ public class PlayerController : MonoBehaviour
 
     [Range(0, 100)] public float thirstyAmount;
     [Range(0, 100)] public float hungerAmount;
+    [Range(0, 100)] public float stressAmount;
     public float negSpeed = 5;
     public Slider foodSlider;
     public Slider ThirstySlider;
+    public Slider StressSlider;
     public TextMeshProUGUI InteractionName;
     public GameObject InteractionPanel;
 
-    public GameObject ObjectivePanel;
-    public TextMeshProUGUI objectiveTitle;
-    public TextMeshProUGUI objectiveDescription;
-
-
+    public GameObject MedicineIcon;
+    
     public bool isAlive = true;
 
 
@@ -50,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         hungerAmount = 100;
         thirstyAmount = 100;
+        stressAmount = 80;
     }
     void Update()
     {
@@ -69,11 +69,11 @@ public class PlayerController : MonoBehaviour
 
         ThirstySlider.value = thirstyAmount; 
 
-        ThirstySlider.value = thirstyAmount;
+        StressSlider.value = stressAmount;
 
         
 
-        if (hungerAmount <= 0 || thirstyAmount <= 0)
+        if (hungerAmount <= 0 || thirstyAmount <= 0 ||stressAmount <= 0)
         {
 
             isAlive = false;
@@ -145,7 +145,22 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        if (other.gameObject.CompareTag("Medicine"))
+        {
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E) && thirstyAmount <= 80)
+            {
+                isAlive = false;
+                Destroy(other.gameObject);
 
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && thirstyAmount >= 80)
+            {
+                stressAmount -= 30;
+                MedicineIcon.SetActive(false);
+                Destroy(other.gameObject) ;
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
