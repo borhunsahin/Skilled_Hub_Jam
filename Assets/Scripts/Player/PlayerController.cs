@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject MedicineIcon;
     
-    public bool isAlive = true;
+    public bool isAlive;
 
 
 
@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
         hungerAmount = 100;
         thirstyAmount = 100;
         stressAmount = 80;
+
+        isAlive = true;
     }
     void Update()
     {
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         StressSlider.value = stressAmount;
 
-        
+        isAlive = false;
 
         if (hungerAmount <= 0 || thirstyAmount <= 0 ||stressAmount <= 0)
         {
