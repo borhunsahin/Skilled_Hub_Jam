@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Gravity gravity;
 
     private Camera playerCam;
+    [SerializeField] private GameObject secondFloor;
 
     [HideInInspector] public float currentSpeedMultiplier;
 
@@ -34,8 +35,6 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI objectiveTitle;
     public TextMeshProUGUI objectiveDescription;
 
-
-
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -49,6 +48,10 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (gameObject.transform.position.y >= 3.50)
+            secondFloor.SetActive(true);
+        else
+            secondFloor.SetActive(false);
 
         FreeMode();
         GravityApply();
@@ -58,8 +61,7 @@ public class PlayerController : MonoBehaviour
         hungerAmount = hungerAmount - Time.deltaTime * negSpeed;
 
         foodSlider.value = hungerAmount;
-        ThirstySlider.value = thirstyAmount;
-
+        ThirstySlider.value = thirstyAmount; 
     }
     public void Move(InputAction.CallbackContext context)
     {
