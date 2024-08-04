@@ -21,6 +21,10 @@ public class Player_Movement : MonoBehaviour
     public Slider ThirstySlider;
     public TextMeshProUGUI InteractionName;
     public GameObject InteractionPanel;
+
+    public GameObject ObjectivePanel;
+    public TextMeshProUGUI objectiveTitle;
+    public TextMeshProUGUI objectiveDescription;
     void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -3405,6 +3405,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f1bb7a99cc856419859c0286fe3efe, type: 3}
+--- !u!1 &1261814023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1261814024}
+  m_Layer: 0
+  m_Name: RayShootTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1261814024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261814023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.387, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1943047293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1291624234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,6 +4859,9 @@ MonoBehaviour:
   ThirstySlider: {fileID: 1695824806}
   InteractionName: {fileID: 761093467}
   InteractionPanel: {fileID: 1541091735}
+  ObjectivePanel: {fileID: 0}
+  objectiveTitle: {fileID: 0}
+  objectiveDescription: {fileID: 0}
 --- !u!136 &1630821967
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5743,6 +5777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea98635e25a2ee4396de59e99e8da4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1943047293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8398273069848704178, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+  m_PrefabInstance: {fileID: 2016791382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1980078248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,10 +5985,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 587458872458146654, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: m_Height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 587458872458146654, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: m_Center.y
+      value: -0.51
+      objectReference: {fileID: 0}
     - target: {fileID: 1386569701918895685, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: rayShootTransform
+      value: 
+      objectReference: {fileID: 1261814024}
     - target: {fileID: 8398273069848704178, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -6004,7 +6055,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8398273069848704178, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261814024}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
 --- !u!1 &2019643006

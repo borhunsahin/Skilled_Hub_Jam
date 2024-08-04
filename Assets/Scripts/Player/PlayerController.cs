@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +22,20 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public float currentSpeedMultiplier;
 
+    [Range(0, 100)] public float thirstyAmount;
+    [Range(0, 100)] public float hungerAmount;
+    public float negSpeed = 5;
+    public Slider foodSlider;
+    public Slider ThirstySlider;
+    public TextMeshProUGUI InteractionName;
+    public GameObject InteractionPanel;
+
+    public GameObject ObjectivePanel;
+    public TextMeshProUGUI objectiveTitle;
+    public TextMeshProUGUI objectiveDescription;
+
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -27,6 +43,9 @@ public class PlayerController : MonoBehaviour
         playerCam = Camera.main;
 
         currentSpeedMultiplier = 1;
+
+        hungerAmount = 100;
+        thirstyAmount = 100;
     }
     void Update()
     {
@@ -34,6 +53,12 @@ public class PlayerController : MonoBehaviour
         FreeMode();
         GravityApply();
         Movement();
+
+        thirstyAmount = thirstyAmount - Time.deltaTime * negSpeed;
+        hungerAmount = hungerAmount - Time.deltaTime * negSpeed;
+
+        foodSlider.value = hungerAmount;
+        ThirstySlider.value = thirstyAmount;
 
     }
     public void Move(InputAction.CallbackContext context)
@@ -56,9 +81,60 @@ public class PlayerController : MonoBehaviour
     }
     public void Interact(InputAction.CallbackContext context)
     {
+
         if (!context.started) return;
 
-        Debug.Log("Interact F");
+        Debug.Log("F");
+    }
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Light"))
+        {
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Light lightComponent = other.gameObject.GetComponentInChildren<Light>();
+                if (lightComponent != null)
+                {
+                    lightComponent.enabled = !lightComponent.enabled;
+                    InteractionPanel.SetActive(false);
+                }
+            }
+
+        }
+        if (other.gameObject.CompareTag("Water"))
+        {
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(other.gameObject);
+                thirstyAmount += 10;
+                InteractionPanel.SetActive(false);
+            }
+
+        }
+        if (other.gameObject.CompareTag("Food"))
+        {
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(other.gameObject);
+                hungerAmount += 10;
+                InteractionPanel.SetActive(false);
+            }
+
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        InteractionPanel.SetActive(false);
+    }
+    private void InteractionUI(string Name)
+    {
+        InteractionPanel.SetActive(true);
+        InteractionName.text = Name + " Use";
     }
     private void FreeMode()
     {
