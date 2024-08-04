@@ -12,6 +12,7 @@ TagManager:
   - Food
   - Water
   - Medicine
+  - BrokenLight
   layers:
   - Default
   - TransparentFX

@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
     public GameObject InteractionPanel;
 
     public GameObject MedicineIcon;
-    
-    public bool isAlive;
+
+    public bool isAlive = true;
 
 
 
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         thirstyAmount = 100;
         stressAmount = 80;
 
-        isAlive = true;
+       
     }
     void Update()
     {
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         if (hungerAmount <= 0 || thirstyAmount <= 0 ||stressAmount <= 0)
         {
-
+            Debug.Log("Dead1");
             isAlive = false;
         }
 
@@ -125,6 +125,13 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        if (other.gameObject.CompareTag("BrokenLight") && Input.GetKeyDown(KeyCode.E))
+        {
+            //Elekritik Çaprma Animasyonu (Bool ile kontrol ederiz )
+            Debug.Log("dead2");
+            isAlive = false;
+        }
+
         if (other.gameObject.CompareTag("Water"))
         {
             InteractionUI(other.gameObject.name);
@@ -153,6 +160,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && thirstyAmount <= 80)
             {
                 isAlive = false;
+                Debug.Log("dead3");
                 Destroy(other.gameObject);
 
             }
