@@ -60,28 +60,24 @@ public class PlayerController : MonoBehaviour
         else
             secondFloor.SetActive(false);
 
-        FreeMode();
+        if (isAlive)
+            FreeMode();
         GravityApply();
-        Movement();
+        if(isAlive)
+            Movement();
 
         thirstyAmount = thirstyAmount - Time.deltaTime * negSpeed;
         hungerAmount = hungerAmount - Time.deltaTime * negSpeed;
 
         foodSlider.value = hungerAmount;
-
         ThirstySlider.value = thirstyAmount; 
-
         StressSlider.value = stressAmount;
-
-        isAlive = false;
 
         if (hungerAmount <= 0 || thirstyAmount <= 0 ||stressAmount <= 0)
         {
             Debug.Log("Dead1");
             isAlive = false;
         }
-
-
     }
     public void Move(InputAction.CallbackContext context)
     {

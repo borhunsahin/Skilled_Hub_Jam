@@ -10366,6 +10366,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1695824806}
     - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: thirstyAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
       propertyPath: ObjectivePanel
       value: 
       objectReference: {fileID: 0}
