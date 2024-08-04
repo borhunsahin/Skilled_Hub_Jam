@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public GameObject MedicineIcon;
 
     public bool isAlive = true;
+    public ParticleSystem particalElectiric;
+    
 
 
 
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("BrokenLight") && Input.GetKeyDown(KeyCode.E))
         {
-            //Elekritik Çaprma Animasyonu (Bool ile kontrol ederiz )
+            particalElectiric.Play();
             Debug.Log("dead2");
             isAlive = false;
         }
