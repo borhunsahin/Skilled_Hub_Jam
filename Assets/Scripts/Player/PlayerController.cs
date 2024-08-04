@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isAlive = true;
     public ParticleSystem particalElectiric;
+    public ParticleSystem particalElectiric2;
     public GameObject deadUıPanel;
     
 
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("BrokenLight") && Input.GetKeyDown(KeyCode.E))
         {
             particalElectiric.Play();
+            particalElectiric2.Play();
             Debug.Log("dead2");
             isAlive = false;
         }
@@ -147,7 +149,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(other.gameObject);
-                thirstyAmount += 10;
+                thirstyAmount += 50;
                 InteractionPanel.SetActive(false);
             }
 
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(other.gameObject);
-                hungerAmount += 10;
+                hungerAmount += 50;
                 InteractionPanel.SetActive(false);
             }
 
