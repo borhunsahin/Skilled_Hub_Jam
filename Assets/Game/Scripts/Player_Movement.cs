@@ -128,7 +128,16 @@ public class Player_Movement : MonoBehaviour
             }
             
         }
+        if (other.gameObject.CompareTag("Medicine"))
+        {
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E) && thirstyAmount <= 80)
+            {
+                
+                Destroy (other.gameObject);
 
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
