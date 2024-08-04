@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    PlayerController playerController;
+    public PlayerController playerController;
     public Animator animator;
+   
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -15,5 +16,8 @@ public class PlayerAnimationController : MonoBehaviour
     {      
         animator.SetFloat("inputX",playerController.input.x * playerController.currentSpeedMultiplier);
         animator.SetFloat("inputY", playerController.input.y * playerController.currentSpeedMultiplier);
+        animator.SetBool("isAlive", playerController.isAlive);
+
+        
     }
 }

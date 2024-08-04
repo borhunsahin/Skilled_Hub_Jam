@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI objectiveTitle;
     public TextMeshProUGUI objectiveDescription;
 
+
+    public bool isAlive = true;
+
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -61,7 +66,20 @@ public class PlayerController : MonoBehaviour
         hungerAmount = hungerAmount - Time.deltaTime * negSpeed;
 
         foodSlider.value = hungerAmount;
+
         ThirstySlider.value = thirstyAmount; 
+
+        ThirstySlider.value = thirstyAmount;
+
+        
+
+        if (hungerAmount <= 0 || thirstyAmount <= 0)
+        {
+
+            isAlive = false;
+        }
+
+
     }
     public void Move(InputAction.CallbackContext context)
     {

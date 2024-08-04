@@ -8848,9 +8848,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 810266402}
     - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: foodSlider
+      value: 
+      objectReference: {fileID: 1437365058}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: ThirstySlider
+      value: 
+      objectReference: {fileID: 1695824806}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: ObjectivePanel
+      value: 
+      objectReference: {fileID: 1479920555}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: objectiveTitle
+      value: 
+      objectReference: {fileID: 95936111}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: InteractionName
+      value: 
+      objectReference: {fileID: 761093467}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: InteractionPanel
+      value: 
+      objectReference: {fileID: 1541091735}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
       propertyPath: rayShootTransform
       value: 
       objectReference: {fileID: 1261814024}
+    - target: {fileID: 5369474778500197829, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: objectiveDescription
+      value: 
+      objectReference: {fileID: 1397107466}
+    - target: {fileID: 6644538904370320769, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1943047288}
     - target: {fileID: 8398273069848704178, guid: 4d71b2eaef8b2954fbfcec3047a14763, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
