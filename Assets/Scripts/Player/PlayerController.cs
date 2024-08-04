@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isAlive = true;
     public ParticleSystem particalElectiric;
+    public GameObject deadUıPanel;
     
 
 
@@ -49,8 +50,8 @@ public class PlayerController : MonoBehaviour
 
         currentSpeedMultiplier = 1;
 
-        hungerAmount = 100;
-        thirstyAmount = 100;
+        hungerAmount = 40;
+        thirstyAmount = 40;
         stressAmount = 80;
 
        
@@ -79,6 +80,16 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Dead1");
             isAlive = false;
+        }
+
+        if (!isAlive)
+        {
+
+            deadUıPanel.SetActive(true);
+        }
+        else if (isAlive)
+        {
+            deadUıPanel.SetActive(false);
         }
     }
     public void Move(InputAction.CallbackContext context)
