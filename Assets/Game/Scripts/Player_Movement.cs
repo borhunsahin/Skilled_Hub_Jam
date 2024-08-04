@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class Player_Movement : MonoBehaviour
     public float negSpeed = 5;
     public Slider foodSlider;
     public Slider ThirstySlider;
-    
+    public TextMeshProUGUI InteractionName;
+    public GameObject InteractionPanel;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -81,31 +83,58 @@ public class Player_Movement : MonoBehaviour
 
         foodSlider.value = hungerAmount;
         ThirstySlider.value = thirstyAmount;
+        
     }
     private void OnTriggerStay(Collider other)
     {
        
-        if (other.gameObject.CompareTag("Light") && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Light"))
         {
-            Light lightComponent = other.gameObject.GetComponentInChildren<Light>();
-            if (lightComponent != null)
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                lightComponent.enabled = !lightComponent.enabled;
+                Light lightComponent = other.gameObject.GetComponentInChildren<Light>();
+                if (lightComponent != null)
+                {
+                    lightComponent.enabled = !lightComponent.enabled;
+                    InteractionPanel.SetActive(false);
+                }
             }
+            
         }
-        if (other.gameObject.CompareTag("Water") && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Water"))
         {
-            Destroy(other.gameObject);
-            thirstyAmount += 10;
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(other.gameObject);
+                thirstyAmount += 10;
+                InteractionPanel.SetActive(false);
+            }
+            
         }
-        if (other.gameObject.CompareTag("Food") && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Food") )
         {
-            Destroy(other.gameObject);
-            hungerAmount += 10;
+            InteractionUI(other.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(other.gameObject);
+                hungerAmount += 10;
+                InteractionPanel.SetActive(false);
+            }
+            
         }
 
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        InteractionPanel.SetActive(false);
+    }
+    private void InteractionUI(string Name)
+    {
+        InteractionPanel.SetActive(true);
+        InteractionName.text = Name + " Use";
+    }
 
 }
 
